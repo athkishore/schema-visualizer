@@ -1,0 +1,7 @@
+{
+  "name": "schema-visualizer-monorepo",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
+}
