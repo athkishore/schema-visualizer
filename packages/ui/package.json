@@ -1,0 +1,38 @@
+{
+  "name": "@schema-visualizer/ui",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./styles.css": "./dist/styles/visualizer.css"
+  },
+  "scripts": {
+    "build": "npx @tailwindcss/cli -i ./src/styles/visualizer.css -o ./dist/styles/visualizer.css --minify && tsc --build",
+    "dev": "npx @tailwindcss/cli -i ./src/styles/visualizer.css -o ./dist/styles/visualizer.css --watch",
+    "clean": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "dependencies": {
+    "@schema-visualizer/core": "*"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.0",
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "postcss": "^8.5.31",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
