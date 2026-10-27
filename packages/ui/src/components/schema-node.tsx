@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { SchemaNode as SchemaNodeType } from '@schema-visualizer/core';
 import { TypeBadge } from './type-badge.js';
+import styles from './schema-node.module.css';
 
 interface SchemaNodeProps {
   name?: string;
@@ -24,54 +25,17 @@ export const SchemaNode: React.FC<SchemaNodeProps> = ({
     (node.type === 'array' && Boolean(node.items));
 
   return (
-    <div
-      style={{
-        fontFamily: "ui-sans-serif, system-ui, sans-serif",
-        fontSize: '0.875rem',
-        lineHeight: '1.25rem',
-      }}
-    >
+    <div className={styles.nodeContainer}>
       {!root && (
-        <div
-          className="sv:hover:bg-zinc-800/40 sv:transition-colors"
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.5rem',
-            paddingTop: '0.375rem',
-            paddingBottom: '0.375rem',
-            paddingLeft: '0.5rem',
-            paddingRight: '0.5rem',
-            borderRadius: '0.5rem',
-          }}
-        >
+        <div className={styles.nodeRow}>
           {hasChildren ? (
             <button
+              className={styles.toggleBtn}
               onClick={() => setIsExpanded(!isExpanded)}
               aria-label="Toggle node"
-              // className="sv:mt-1 sv:p-0.5 sv:rounded sv:hover:bg-zinc-700/50 sv:text-zinc-400 sv:hover:text-zinc-200 sv:transition-colors"
-              style={{
-                marginTop: '0.25rem',
-                padding: '0.125rem',
-                borderRadius: '0.25rem',
-                color: 'rgb(161 161 170)', // hex: #a1a1aa (zinc-400)
-                transitionProperty: 'color, background-color, border-color, text-decoration-color, fill, stroke',
-                transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
-                transitionDuration: '150ms',
-              }}
             >
               <svg
-                // className={`sv:w-3.5 sv:h-3.5 sv:transform sv:transition-transform ${
-                //   isExpanded ? 'sv:rotate-90' : ''
-                // }`}
-                style={{
-                  width: '0.875rem',
-                  height: '0.875rem',
-                  transform: 'translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))',
-                  transitionProperty: 'transform',
-                  transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
-                  transitionDuration: '150ms',
-                }}
+                className={`${styles.chevron} ${isExpanded ? styles.expanded : ''}`}
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -80,24 +44,11 @@ export const SchemaNode: React.FC<SchemaNodeProps> = ({
               </svg>
             </button>
           ) : (
-            <span 
-              // className="sv:w-4"
-              style={{
-                width: '1rem', // 16px
-              }}
-            >
-
-            </span>
+            <span className={styles.spacer} />
           )}
           {(
-            <div 
-              // className="sv:flex-1"
-              style={{
-                flex: '1 1 0%',
-              }}
-            >
+            <div style={{ flex: '1 1 0%' }}>
               <div 
-                // className="sv:flex sv:items-center sv:gap-2 sv:flex-wrap"
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -106,21 +57,9 @@ export const SchemaNode: React.FC<SchemaNodeProps> = ({
                 }}
               >
                 {name && (
-                  <span
-                    // className="sv:font-mono sv:font-semibold sv:text-zinc-100"
-                    style={{
-                      fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
-                      fontWeight: '600',
-                      color: 'rgb(244 244 245)', // hex: #f4f4f5 (zinc-100)
-                    }}
-                  >
+                  <span className={styles.propertyName}>
                     {name}
-                    <span
-                      // className="sv:text-zinc-500"
-                      style={{
-                        color: 'rgb(113 113 122)', // hex: #71717a (zinc-500)
-                      }}
-                    >
+                    <span className={styles.colon}>
                       :
                     </span>
                   </span>
@@ -128,15 +67,7 @@ export const SchemaNode: React.FC<SchemaNodeProps> = ({
                 {<TypeBadge node={node} />}
               </div>
               {node.description && (
-                <p
-                  // className="sv:mt-1 sv:text-xs sv:text-zinc-400"
-                  style={{
-                    marginTop: '0.25rem', // 4px
-                    fontSize: '0.75rem', // 12px
-                    lineHeight: '1rem', // 16px (Tailwind pairs this with text-xs)
-                    color: 'rgb(161 161 170)', // hex: #a1a1aa (zinc-400)
-                  }}
-                >
+                <p className={styles.description}>
                   {node.description}
                 </p>
               )}
@@ -146,18 +77,7 @@ export const SchemaNode: React.FC<SchemaNodeProps> = ({
       )}
 
       {isExpanded && hasChildren && (
-        <div 
-          // className="sv:ml-5 sv:pl-3 sv:border sv:border-zinc-800 sv:my-1 sv:space-y-1"
-          style={{
-            marginLeft: '1.25rem',
-            paddingLeft: '0.75rem',
-            borderStyle: 'solid',
-            borderWidth: '1px',
-            borderColor: 'rgb(39 39 42)', // hex: #27272a (zinc-800)
-            marginTop: '0.25rem',
-            marginBottom: '0.25rem',
-          }}
-        >
+        <div className={styles.childrenArea}>
           {node.type === 'object' && node.properties && (
             Object.entries(node.properties).map(([propName, childNode], index, array) => (
               <SchemaNode 

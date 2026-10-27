@@ -9,11 +9,11 @@
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
-    "./styles.css": "./dist/styles/visualizer.css"
+    "./styles.css": "./dist/index.css"
   },
   "scripts": {
-    "build": "tsc --build",
-    "clean": "rm -rf dist"
+    "build": "vite build",
+    "dev": "vite build --watch"
   },
   "peerDependencies": {
     "react": "^19.0.0",
@@ -25,7 +25,10 @@
   "devDependencies": {
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "typescript": "^7.0.2"
+    "@vitejs/plugin-react": "^6.1.2",
+    "typescript": "^7.0.2",
+    "unplugin-dts": "^1.1.2",
+    "vite": "^8.3.5"
   },
   "keywords": [],
   "author": "",

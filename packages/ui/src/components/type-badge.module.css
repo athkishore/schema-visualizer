@@ -1,0 +1,49 @@
+/* TypeBadge.module.css */
+.badgeWrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.75rem;
+  font-family: var(--sv-font-mono);
+}
+
+.requiredTag {
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  font-size: 10px;
+  font-weight: 600;
+  background: rgba(239, 68, 68, 0.1);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.optionalTag {
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  font-size: 10px;
+  font-weight: 500;
+  background: var(--sv-bg-hover);
+  color: var(--sv-text-muted);
+}
+
+.typeBadge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.375rem;
+  border: 1px solid var(--sv-border);
+  font-weight: 500;
+}
+
+.string { background: var(--sv-badge-string-bg); color: var(--sv-badge-string-text); }
+.number { background: var(--sv-badge-number-bg); color: var(--sv-badge-number-text); }
+.boolean { background: var(--sv-badge-boolean-bg); color: var(--sv-badge-boolean-text); }
+.object { background: var(--sv-badge-object-bg); color: var(--sv-badge-object-text); }
+.array { background: var(--sv-badge-array-bg); color: var(--sv-badge-array-text); }
+
+.constraint {
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  background: var(--sv-bg-surface);
+  color: var(--sv-text-muted);
+  border: 1px solid var(--sv-border);
+  font-size: 11px;
+}
