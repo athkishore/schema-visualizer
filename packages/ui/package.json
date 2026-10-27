@@ -12,8 +12,7 @@
     "./styles.css": "./dist/styles/visualizer.css"
   },
   "scripts": {
-    "build": "npx @tailwindcss/cli -i ./src/styles/visualizer.css -o ./dist/styles/visualizer.css --minify && tsc --build",
-    "dev": "npx @tailwindcss/cli -i ./src/styles/visualizer.css -o ./dist/styles/visualizer.css --watch",
+    "build": "tsc --build",
     "clean": "rm -rf dist"
   },
   "peerDependencies": {
