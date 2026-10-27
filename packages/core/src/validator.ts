@@ -1,4 +1,4 @@
-import { SchemaNode } from "./ast";
+import { SchemaNode } from "./ast.js";
 
 export function validatePayload(node: SchemaNode, payload: any): { success: boolean; errors: string[] } {
   const errors: string[] = [];

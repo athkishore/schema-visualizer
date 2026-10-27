@@ -1,0 +1,1 @@
+export { SchemaViewer } from './components/schema-viewer.js';

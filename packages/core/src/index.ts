@@ -1,2 +1,2 @@
-export * from './ast';
-export { parseZodSchema } from './parsers/zod';
+export * from './ast.js';
+export { parseZodSchema } from './parsers/zod.js';

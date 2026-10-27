@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { SchemaNode, FieldType } from '../ast';
+import { SchemaNode, FieldType } from '../ast.js';
 
 export function parseZodSchema(schema: z.ZodType): SchemaNode {
   let current = schema;
