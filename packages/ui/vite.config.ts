@@ -22,10 +22,6 @@ export default defineConfig({
           'react-dom': 'ReactDOM',
           '@schema-visualizer/core': 'SchemaVisualizerCore',
         },
-        assetFileNames: (assetInfo) => {
-          if (assetInfo.names?.[0] && assetInfo.names?.[0].endsWith('.css')) return 'styles.css';
-          return assetInfo.names?.[0] || '';
-        }
       },
       plugins: [
         esmExternalRequirePlugin({

@@ -1,4 +1,3 @@
-/* SchemaViewer.module.css */
 .root {
   background-color: var(--sv-bg-primary);
   border: 1px solid var(--sv-border);
@@ -58,6 +57,7 @@
 
 .content {
   padding: 1rem;
+  margin-top: 0;
 }
 
 

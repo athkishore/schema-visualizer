@@ -37,17 +37,18 @@ export const SchemaNode: React.FC<SchemaNodeProps> = ({
               <svg
                 className={`${styles.chevron} ${isExpanded ? styles.expanded : ''}`}
                 fill="none"
-                stroke="currentColor"
                 viewBox="0 0 24 24"
+                width="24"
+                height="24"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="9 5l7 7l-7 7" />
+                <path stroke="#64748b" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7l-7 7" />
               </svg>
             </button>
           ) : (
             <span className={styles.spacer} />
           )}
           {(
-            <div style={{ flex: '1 1 0%' }}>
+            <div style={{ flex: 1, margin: 0 }}>
               <div 
                 style={{
                   display: 'flex',
@@ -77,7 +78,7 @@ export const SchemaNode: React.FC<SchemaNodeProps> = ({
       )}
 
       {isExpanded && hasChildren && (
-        <div className={styles.childrenArea}>
+        <div className={styles.childrenArea} style={{ paddingLeft: root ? 0 : undefined, marginLeft: root ? 0 : undefined }}>
           {node.type === 'object' && node.properties && (
             Object.entries(node.properties).map(([propName, childNode], index, array) => (
               <SchemaNode 
