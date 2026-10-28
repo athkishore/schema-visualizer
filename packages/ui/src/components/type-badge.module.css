@@ -37,6 +37,8 @@
 .boolean { background: var(--sv-badge-boolean-bg); color: var(--sv-badge-boolean-text); }
 .object { background: var(--sv-badge-object-bg); color: var(--sv-badge-object-text); }
 .array { background: var(--sv-badge-array-bg); color: var(--sv-badge-array-text); }
+.enum { background: var(--sv-badge-enum-bg); color: var(--sv-badge-enum-text); }
+.union { background: var(--sv-badge-union-bg); color: var(--sv-badge-union-text); }
 
 .constraint {
   padding: 0.125rem 0.375rem;

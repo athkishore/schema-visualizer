@@ -83,6 +83,10 @@
   --sv-badge-object-text: #60a5fa;
   --sv-badge-array-bg: rgba(99, 102, 241, 0.1);
   --sv-badge-array-text: #818cf8;
+  --sv-badge-enum-bg: rgba(6, 182, 212, 0.1);
+  --sv-badge-enum-text: #22d3ee;
+  --sv-badge-union-bg: rgba(244, 63, 94, 0.1);
+  --sv-badge-union-text: #fb7185;
 
   --sv-font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --sv-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
@@ -109,4 +113,8 @@
   --sv-badge-object-text: #1d4ed8;
   --sv-badge-array-bg: #eef2ff;
   --sv-badge-array-text: #4338ca;
+  --sv-badge-enum-bg: #ecfeff;
+  --sv-badge-enum-text: #0891b2;
+  --sv-badge-union-bg: #fff1f2;
+  --sv-badge-union-text: #e11d48;
 }
