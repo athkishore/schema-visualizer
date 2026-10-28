@@ -15,20 +15,23 @@ export const SchemaNode: React.FC<SchemaNodeProps> = ({
   name,
   node,
   isLast = true,
-  defaultExpanded = true,
+  defaultExpanded = false,
   root = false,
 }) => {
-  const [isExpanded, setIsExpanded] = useState(defaultExpanded);
+  const [isExpanded, setIsExpanded] = useState(root ? true : defaultExpanded);
 
   const hasChildren = 
     (node.type === 'object' && node.properties && Object.keys(node.properties).length > 0) ||
     (node.type === 'array' && Boolean(node.items));
 
+  const hasOptions = 
+    ((node.type === 'enum' || node.type === 'union') && node.options && node.options.length > 0);
+
   return (
     <div className={styles.nodeContainer}>
       {!root && (
         <div className={styles.nodeRow}>
-          {hasChildren ? (
+          {hasChildren || hasOptions ? (
             <button
               className={styles.toggleBtn}
               onClick={() => setIsExpanded(!isExpanded)}
@@ -96,6 +99,19 @@ export const SchemaNode: React.FC<SchemaNodeProps> = ({
               node={node.items as SchemaNodeType}
             />
           )}
+        </div>
+      )}
+
+      {isExpanded && hasOptions && node.options && (
+        <div className={styles.childrenArea} style={{ paddingLeft: root ? 0 : undefined, marginLeft: root ? 0 : undefined }}>
+          {node.type === 'enum' && (
+            node.options.map((opt, index) => (
+              <div key={index} className={styles.enumOption}>
+                option {index + 1}: "{opt}"
+              </div>
+            ))
+          )}
+        
         </div>
       )}
     </div>

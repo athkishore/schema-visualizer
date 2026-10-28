@@ -8,7 +8,6 @@ interface TypeBadgeProps {
 
 export const TypeBadge: React.FC<TypeBadgeProps> = ({ node }) => {
   const typeClass = (styles as Record<string, string>)[node.type] || styles.typeBadge;
-  console.log(typeClass);
 
   const constraintsList: string[] = [];
 
