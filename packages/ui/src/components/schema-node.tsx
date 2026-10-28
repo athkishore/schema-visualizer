@@ -111,7 +111,17 @@ export const SchemaNode: React.FC<SchemaNodeProps> = ({
               </div>
             ))
           )}
-        
+          
+          {node.type === 'union' && (
+            node.options.map((opt, index, arr) => (
+              <SchemaNode
+                key={index} 
+                name={`option ${index + 1}`}
+                node={opt}
+                isLast={index === arr.length - 1}
+              />
+            ))
+          )}
         </div>
       )}
     </div>
