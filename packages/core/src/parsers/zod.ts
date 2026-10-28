@@ -120,6 +120,17 @@ export function parseZodSchema(schema: z.ZodType): SchemaNode {
       };
     }
 
+    case 'enum': {      
+      nodeType = 'enum';
+      return {
+        type: nodeType,
+        required: isRequired,
+        description,
+        options: Object.values((def as z.ZodEnum['def']).entries),
+        defaultValue,
+      };
+    }
+
     default:
       nodeType = 'string';
   }
