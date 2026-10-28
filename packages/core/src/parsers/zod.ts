@@ -131,6 +131,17 @@ export function parseZodSchema(schema: z.ZodType): SchemaNode {
       };
     }
 
+    case 'union': {
+      nodeType = 'union';
+      return {
+        type: nodeType,
+        required: isRequired,
+        description,
+        options: (def as z.ZodUnion['def']).options.map(opt => parseZodSchema(opt as z.ZodType)),
+        defaultValue,
+      };
+    }
+
     default:
       nodeType = 'string';
   }
