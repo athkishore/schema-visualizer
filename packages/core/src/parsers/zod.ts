@@ -90,6 +90,15 @@ export function parseZodSchema(schema: z.ZodType): SchemaNode {
       break;
     }
 
+    case 'literal': {
+      nodeType = 'literal';
+      return {
+        type: nodeType,
+        required: isRequired,
+        defaultValue: (def as z.ZodLiteral['def']).values[0],
+      };
+    }
+
     case 'object': {
       nodeType = 'object';
       const shape = (def as z.ZodObject['def']).shape;
