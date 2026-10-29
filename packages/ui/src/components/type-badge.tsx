@@ -26,6 +26,11 @@ export const TypeBadge: React.FC<TypeBadgeProps> = ({ node }) => {
       <span className={`${styles.typeBadge} ${typeClass}`}>
         {node.type}
       </span>
+      {node.type === 'literal' && (
+        <span className={styles.literal}>
+          "{node.defaultValue}"
+        </span>
+      )}
       {constraintsList.map((constraint, idx) => (
         <span key={idx} className={styles.constraint}>
           {constraint}

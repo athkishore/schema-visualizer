@@ -25,6 +25,10 @@
   color: var(--sv-text-muted);
 }
 
+.literal {
+  padding-left: 0.5rem;
+}
+
 .typeBadge {
   padding: 0.125rem 0.5rem;
   border-radius: 0.375rem;
