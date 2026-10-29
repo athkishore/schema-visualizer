@@ -113,14 +113,20 @@ export const SchemaNode: React.FC<SchemaNodeProps> = ({
           )}
           
           {node.type === 'union' && (
-            node.options.map((opt, index, arr) => (
-              <SchemaNode
-                key={index} 
-                name={`option ${index + 1}`}
-                node={opt}
-                isLast={index === arr.length - 1}
-              />
-            ))
+            node.options.map((opt, index, arr) => {
+              const name = (opt as SchemaNodeType).discriminatorValue
+                ? `${(node as SchemaNodeType).discriminator}:${(opt as SchemaNodeType).discriminatorValue}`
+                : `option ${index + 1}`;
+
+              return (
+                <SchemaNode
+                  key={index}
+                  name={name}
+                  node={opt}
+                  isLast={index === arr.length - 1}
+                />
+              );
+            })
           )}
         </div>
       )}
