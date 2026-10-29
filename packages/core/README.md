@@ -10,6 +10,9 @@ npm install @schema-visualizer/core zod
 
 ## Usage
 
+This package is intended to be used with `@schema-visualizer/ui` which provides the UI
+component that can consume the AST generated.
+
 ### Parsing a Zod schema
 
 ```
