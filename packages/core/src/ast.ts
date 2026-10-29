@@ -42,4 +42,6 @@ export interface SchemaNode {
   };
   // For enums or unions
   options?: any[] | SchemaNode[];
+  discriminator?: string;
+  discriminatorValue?: string;
 }

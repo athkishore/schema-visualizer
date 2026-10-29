@@ -133,12 +133,19 @@ export function parseZodSchema(schema: z.ZodType): SchemaNode {
 
     case 'union': {
       nodeType = 'union';
+      const discriminator = (def as z.ZodDiscriminatedUnion['def']).discriminator;
       return {
         type: nodeType,
         required: isRequired,
         description,
-        options: (def as z.ZodUnion['def']).options.map(opt => parseZodSchema(opt as z.ZodType)),
+        options: (def as z.ZodDiscriminatedUnion['def']).options.map(opt => {
+          const discriminatorValue = discriminator
+            ? (((opt as z.ZodObject).def?.shape?.[discriminator] as z.ZodLiteral)?.def?.values?.[0])
+            : undefined;
+          return { ...parseZodSchema(opt as z.ZodType), discriminatorValue };
+        }),
         defaultValue,
+        discriminator,
       };
     }
 
