@@ -40,3 +40,7 @@ console.log(JSON.stringify(ast, null, 2));
 ### AST Interface
 
 This interface has not yet been standardized and is likely to change drastically until v1.
+
+## License
+
+MIT
